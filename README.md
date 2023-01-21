@@ -17,9 +17,7 @@
 
 <br>
 <br>
-Then follow the setup... <b>nostr-bestrelays/relays-list.txt</b><br>
-<br>
-<br>
+Then follow the setup... <b><br>
 
 
 
