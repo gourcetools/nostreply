@@ -21,7 +21,7 @@ while true; do
 	# Check for new messages using extract-value.js
 	NOTE=$(node crawl-events.js)
 		if [ "$NOTE" == "$OLDNOTE" ]; then   	
-        	echo " == ⌛ No new messages... checking again in 5 seconds"
+        	echo " == ⌛ No new messages... checking again in $ASKINTERVAL seconds"
 		echo " "
 		else
 		echo " == 🆕 New messages found, let's reply"
