@@ -17,11 +17,20 @@ const fs = require('fs');
 
     // Wait for the page to fully load
     await page.waitForSelector('small.text-muted.event-id');
+    await page.waitForSelector('small.text-muted.event-pubkey');
+    
+    
+    // Extract the value from the "<small class="text-muted event-id">" tags
+    	const eventid = await page.$eval('small.text-muted.event-id', el => el.innerHTML);
+fs.writeFileSync('id.txt', eventid);
 
     // Extract the value from the "<small class="text-muted event-id">" tags
-    const value = await page.$eval('small.text-muted.event-id', el => el.innerHTML);
-
-    console.log(`${value}`);
+    	const eventpubkey = await page.$eval('small.text-muted.event-pubkey', el => el.innerHTML);
+fs.writeFileSync('pubkey.txt', eventpubkey);
+    
+    
+    
+    
 
     await browser.close();
 })();
