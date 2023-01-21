@@ -13,6 +13,7 @@ while true; do
 	REPLYMESSAGE=$(cat ../../../config/REPLY-MESSAGE)
 	ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
 	POW=$(cat ../../../config/POW)
+	RELAY=$(cat ../../../config/RELAY)
 	# Save NOTE to OLDNOTE variable before checking note, so 
 	# we can compare them later to see if there is a new event id.
  	OLDNOTE=$NOTE
@@ -26,7 +27,7 @@ while true; do
 		echo " "
 		else
 		echo " == 🆕 New messages found, let's reply"
-		nostril --envelope --pow "$POW" --sec "$PRIVKEY" --content "$REPLYMESSAGE" --tag e $NOTE --tag e $NOTE | websocat wss://relay.nostr.info 
+		nostril --envelope --pow "$POW" --sec "$PRIVKEY" --content "$REPLYMESSAGE" --tag e "$NOTE" --tag e "$NOTE" | websocat "$RELAY"
 		echo " == ⌛Checking for new messages in $ASKINTERVAL seconds..."
 		echo " "
 	fi
