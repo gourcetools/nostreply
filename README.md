@@ -1,18 +1,3 @@
-
-
-# 
-
-
-
-usage:
-
-set privkey in config folder as well as others config 
-
-then launch
- nostreply/src/scripts/crawl-and-reply/crawl-events.sh
-
-
-
 # <b> 🤖↩️ nostreply</b><br>
 <img src="https://img.shields.io/badge/License-MIT-orange.svg"> <br>
 
