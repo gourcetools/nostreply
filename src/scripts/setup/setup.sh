@@ -1,6 +1,7 @@
 #!/bin/bash
 
-
+echo " "
+echo " "
 echo "┌─┐┌─┐┌┬┐┬ ┬┌─┐";
 echo "└─┐├┤  │ │ │├─┘";
 echo "└─┘└─┘ ┴ └─┘┴  ";
@@ -49,11 +50,35 @@ echo $PRIVKEY>../../../config/REPLY-PRIVKEY
 
 echo " "
 echo " == 📡 Enter the relay you will be sending the reply to:"
+echo " == 📡 Leave blank to use wss://relay.nostr.info:"
 read RELAY
 rm -f ../../../config/RELAY
 echo $RELAY > ../../../config/RELAY
 
 echo " "
+echo " "
+
+
+
+# Checking if the content of ../../../config/RELAY is empty and apply default value if empty
+
+
+RELAY=$(cat "../../../config/RELAY")
+
+if [ -z "$RELAY" ]; then
+echo "wss://relay.nostr.info" > "../../../config/RELAY"
+echo "File created and filled with 'wss://relay.nostr.info'."
+else
+echo "File is not empty."
+fi
+
+
+
+
+unset RELAY
 echo " == ✅ SETUP OK "
+echo " == Starting in 5 seconds ..."
+cd ../crawl-and-reply
+./crawl-and-reply.sh
 
 

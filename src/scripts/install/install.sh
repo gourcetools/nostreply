@@ -75,7 +75,11 @@ else
   echo ""
   cd ../crawl-and-reply/
   npm i puppeteer
-  ../install
+  cd ../install
 fi
-
-
+echo " "
+echo " == ✅ INSTALL OK "
+echo " "
+echo " == Opening setup in 5 seconds ..."
+cd ../setup
+./setup.sh
