@@ -2,9 +2,9 @@
 
 echo " "
 echo " "
-echo "┌─┐┌─┐┌┬┐┬ ┬┌─┐";
-echo "└─┐├┤  │ │ │├─┘";
-echo "└─┘└─┘ ┴ └─┘┴  ";
+echo "	┌─┐┌─┐┌┬┐┬ ┬┌─┐";
+echo "	└─┐├┤  │ │ │├─┘";
+echo "	└─┘└─┘ ┴ └─┘┴  ";
 echo " "
 echo " == 🔍 Enter the pattern you want to reply to ex: HEY HEY HEY"
 read ASKMESSAGE
@@ -59,26 +59,8 @@ echo " "
 echo " "
 
 
-
-# Checking if the content of ../../../config/RELAY is empty and apply default value if empty
-
-
-RELAY=$(cat "../../../config/RELAY")
-
-if [ -z "$RELAY" ]; then
-echo "wss://relay.nostr.info" > "../../../config/RELAY"
-echo "File created and filled with 'wss://relay.nostr.info'."
-else
-echo "File is not empty."
-fi
+./check-setup.sh
 
 
-
-
-unset RELAY
-echo " == ✅ SETUP OK "
-echo " == Starting in 5 seconds ..."
-cd ../crawl-and-reply
-./crawl-and-reply.sh
 
 
