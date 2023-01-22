@@ -5,3 +5,5 @@ src/scripts/crawl-and-reply/package.json
 config/REPLY-PRIVKEY
 config/REPLY-PRIVKEY
 config/REPLY-PRIVKEY
+src/scripts/crawl-and-reply/id.txt
+*.txt

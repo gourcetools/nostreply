@@ -25,11 +25,13 @@ while true; do
 	NOTEID=$(cat id.txt)
 	PUBKEY=$(cat pubkey.txt)
 		if [ "$NOTEID" == "$OLDNOTE" ]; then   	
-        	echo " == ⌛ No new messages... checking again in 5 seconds"
+        	echo " == ⌛ No new messages... checking again in $ASKINTERVAL seconds"
 		echo " "
 		else
 		echo " == 🆕 New messages found, let's reply"
+		echo " "
 		nostril --envelope --pow "$POW" --sec "$PRIVKEY" --content "$REPLYMESSAGE" --tag e "$NOTEID" --tag p "$PUBKEY" --tag " " "reply" | websocat "$RELAY" 
+		echo " "
 		echo " == ⌛Checking for new messages in $ASKINTERVAL seconds..."
 		echo " "
 	fi
