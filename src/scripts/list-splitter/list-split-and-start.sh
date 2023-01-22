@@ -17,7 +17,7 @@ cd ../../../../multi-nostreply
 for d in ./* ; do
     echo "Launching $d"
     cd $d/src/scripts/crawl-and-reply
-    x-terminal-emulator -e ./crawl-and-reply.sh &
+    x-terminal-emulator -e ./crawl-and-reply-multi.sh &
     sleep 1
     cd ../../../../
 done
