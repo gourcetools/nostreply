@@ -1,36 +1,18 @@
-const puppeteer = require('puppeteer');
+const WebSocket = require('ws');
 const fs = require('fs');
 
-(async () => {
-    // Read the contents of ../../../config/ASK-MESSAGE
-    const text = fs.readFileSync("../../../config/ASK-MESSAGE", "utf-8");
+fs.readFile("../../../config/ASK-MESSAGE", 'utf8', function(err, contents) {
+const ws = new WebSocket('wss://relay.nostr.band');
 
-    // Replace spaces with "+"
-    const textWithPlus = text.replace(/ /g, "+");
+ws.on('open', function open() {
+    ws.send(JSON.stringify(["REQ","1",{"keywords":[contents], "kinds":[1], "limit": 1}]));
+});
 
-    // Replace "TEXT" in the URL with the contents of ../../../config/ASK-MESSAGE
-    const url = 'https://nostr.band/?q=TEXT'.replace("TEXT", textWithPlus);
+ws.on('message', function incoming(data) {
+    const jsonData = JSON.parse(data);
+    fs.writeFileSync('./id.txt', jsonData[2].id);
+    fs.writeFileSync('./pubkey.txt', jsonData[2].pubkey);
+});
+});
 
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.goto(url);
 
-    // Wait for the page to fully load
-    await page.waitForSelector('small.text-muted.event-id');
-    await page.waitForSelector('small.text-muted.event-pubkey');
-    
-    
-    // Extract the value from the "<small class="text-muted event-id">" tags
-    	const eventid = await page.$eval('small.text-muted.event-id', el => el.innerHTML);
-fs.writeFileSync('id.txt', eventid);
-
-    // Extract the value from the "<small class="text-muted event-id">" tags
-    	const eventpubkey = await page.$eval('small.text-muted.event-pubkey', el => el.innerHTML);
-fs.writeFileSync('pubkey.txt', eventpubkey);
-    
-    
-    
-    
-
-    await browser.close();
-})();

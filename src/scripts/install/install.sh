@@ -63,21 +63,38 @@ fi
 
 
 
-# Check if "nodes_modules" is installed
-echo " == 🤔 Checking if node_modules exist "
-if [ -d "../crawl-and-reply/node_modules" ]; then
+# Check if "fs" is installed
+echo " == 🤔 Checking if node_modules/fs exist "
+if [ -d "../crawl-and-reply/node_modules/fs" ]; then
   echo " == 👌Ok.  "
   echo ""
 else
-  echo " == 🚩 node_modules folder does not exist "
+  echo " == 🚩 node_modules/fs folder does not exist "
   echo ""
   echo " == 🚀 Let's install it! "
   echo ""
   cd ../crawl-and-reply/
-  npm i puppeteer
+  npm i fs
   cd ../install
 fi
 echo " "
+
+# Check if "ws" is installed
+echo " == 🤔 Checking if node_modules/ws exist "
+if [ -d "../crawl-and-reply/node_modules/ws" ]; then
+  echo " == 👌Ok.  "
+  echo ""
+else
+  echo " == 🚩 node_modules/fs folder does not exist "
+  echo ""
+  echo " == 🚀 Let's install it! "
+  echo ""
+  cd ../crawl-and-reply/
+  npm i ws
+  cd ../install
+fi
+echo " "
+
 echo " == ✅ INSTALL OK "
 echo " "
 echo " == Opening setup in 5 seconds ..."
