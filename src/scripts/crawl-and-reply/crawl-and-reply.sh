@@ -18,11 +18,13 @@ while true; do
 	# NODE crawl.js for new messages 
 	node ./crawl.js > /dev/null 2>&1
 	# Set the outputs of crawl.js as id and pubkey
-	NOTEID=$(cat id.txt)
-	PUBKEY=$(cat pubkey.txt)
+	NOTEID=$(cat ./id.txt)
+	PUBKEY=$(cat ./pubkey.txt)
 		# If it's the same note: multiply the timer interval
 		if [ "$NOTEID" == "$OLDNOTE" ]; then   	
-		../adaptive-ask-interval/multiply.sh
+		cd ../adaptive-ask-interval
+		./multiply.sh
+		cd ../crawl-and-reply/
 		unset ASKINTERVAL
 		# Set new interval for the timer		
 		ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
@@ -31,7 +33,9 @@ while true; do
 		else
 		echo " == 🆕 ✅ New messages found, let's reply"
 		# If it's NOT the same note: divide the timer interval
-		../adaptive-ask-interval/divide.sh
+		cd ../adaptive-ask-interval
+		./divide.sh
+		cd ../crawl-and-reply/
 		unset ASKINTERVAL
 		# Set new interval for the timer	
 		ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
