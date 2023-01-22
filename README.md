@@ -17,7 +17,8 @@
 
 <br>
 <br>
-Then follow the setup... <b><br>
+Then follow the setup... using SETUP.sh or edit files manually in ./config folder<br>
+then use ./START.sh to start the bot.
 
 
 
