@@ -12,24 +12,28 @@ while true; do
 	PRIVKEY=$(cat ../../../config/REPLY-PRIVKEY)
 	REPLYMESSAGE=$(cat ../../../config/REPLY-MESSAGE)
 	ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
-	POW=$(cat ../../../config/POW)
 	RELAY=$(cat ../../../config/RELAY)
+	POW=$(cat ../../../config/POW)
 	# Save NOTE to OLDNOTE variable before checking note, so 
 	# we can compare them later to see if there is a new event id.
- 	OLDNOTE=$NOTE
+ 	OLDNOTE=$NOTEID
  	# Unset NOTE variable
 	unset NOTE
 	echo " == ❓Asking nostr.band for new messages..."
-	# Check for new messages using extract-value.js
-	NOTE=$(node crawl-and-reply.js)
-		if [ "$NOTE" == "$OLDNOTE" ]; then   	
-        	echo " == ⌛ No new messages... checking again in $ASKINTERVAL seconds"
+	# Check for new messages using js script
+	node ./crawl.js
+	NOTEID=$(cat id.txt)
+	PUBKEY=$(cat pubkey.txt)
+		if [ "$NOTEID" == "$OLDNOTE" ]; then   	
+        	echo " == ⌛ No new messages... checking again in 5 seconds"
 		echo " "
 		else
 		echo " == 🆕 New messages found, let's reply"
-		nostril --envelope --pow "$POW" --sec "$PRIVKEY" --content "$REPLYMESSAGE" --tag e "$NOTE" --tag e "$NOTE" | websocat "$RELAY"
+		nostril --envelope --pow "$POW" --sec "$PRIVKEY" --content "$REPLYMESSAGE" --tag e "$NOTEID" --tag p "$PUBKEY" --tag " " "reply" | websocat "$RELAY" 
 		echo " == ⌛Checking for new messages in $ASKINTERVAL seconds..."
 		echo " "
 	fi
 sleep $ASKINTERVAL
+rm -f pubkey.txt
+rm -f id.txt
 done
