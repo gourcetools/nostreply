@@ -1,6 +1,15 @@
 #!/bin/bash
 
 
+current_path=$(pwd)
+nostreply_folder=$(echo $current_path | rev | cut -d'/' -f4 | rev)
+echo " Hello, i am $nostreply_folder "
+
+
+
+trap "echo ' == Goodbye. Cleaning and exiting in 5 seconds...'; sleep 4; rm -d -r -f ../../../../../multi-nostreply/"$nostreply_folder"; exit" INT
+
+
 while true; do
 	PRIVKEY=$(cat ../../../config/REPLY-PRIVKEY)
 	REPLYMESSAGE=$(cat ../../../config/REPLY-MESSAGE)
