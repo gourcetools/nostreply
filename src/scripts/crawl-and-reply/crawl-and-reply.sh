@@ -13,9 +13,9 @@ fi
 while true; do
 	PRIVKEY=$(cat ../../../config/REPLY-PRIVKEY)
 	REPLYMESSAGE=$(cat ../../../config/REPLY-MESSAGE)
-	ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
 	RELAY=$(cat ../../../config/RELAY)
 	POW=$(cat ../../../config/POW)
+	ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
 	# Save NOTE to OLDNOTE variable before checking note, so 
 	# we can compare them later to see if there is a new event id.
  	OLDNOTE=$NOTEID
@@ -27,10 +27,16 @@ while true; do
 	NOTEID=$(cat id.txt)
 	PUBKEY=$(cat pubkey.txt)
 		if [ "$NOTEID" == "$OLDNOTE" ]; then   	
+		../adaptative-ask-interval/multiply.sh
+		unset ASKINTERVAL
+		ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
         	echo " == ⌛ No new messages... checking again in $ASKINTERVAL seconds"
 		echo " "
 		else
 		echo " == 🆕 New messages found, let's reply"
+		../adaptative-ask-interval/divide.sh
+		unset ASKINTERVAL
+		ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
 		echo " "
 		nostril --envelope --pow "$POW" --sec "$PRIVKEY" --content "$REPLYMESSAGE" --tag e "$NOTEID" --tag p "$PUBKEY" --tag " " "reply" | websocat "$RELAY" 
 		echo " "
