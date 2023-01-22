@@ -17,7 +17,7 @@ rm -f ../../../config/REPLY-MESSAGE
 echo $REPLYMESSAGE>../../../config/REPLY-MESSAGE
 
 echo " "
-echo " == 🕰️ Enter the ASKINTERVAL in seconds ex: 10 "
+echo " == 🕰️  Enter the ASKINTERVAL in seconds ex: 10 "
 read ASKINTERVAL
 rm -f ../../../config/ASK-INTERVAL
 echo $ASKINTERVAL > ../../../config/ASK-INTERVAL
@@ -36,7 +36,14 @@ echo $MAXASKINTERVAL > ../../../config/MAX-INTERVAL
 
 echo " "
 echo " == 🔑 Enter the private key you will be using to reply as HEX format:"
+echo " == Here is a new keypair in case you need one:"
+echo "========================================================================="
+clust generate-keypair
+echo "========================================================================="
+echo " == Private key:"
 read PRIVKEY
+echo " "
+
 rm -f ../../../config/REPLY-PRIVKEY
 echo $PRIVKEY>../../../config/REPLY-PRIVKEY
 
