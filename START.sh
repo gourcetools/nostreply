@@ -1,2 +1,2 @@
-cd src/scripts/crawl-and-reply
-./crawl-and-reply.sh
+cd src/scripts/list-splitter
+./list-split-and-start.sh
