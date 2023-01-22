@@ -10,6 +10,7 @@ echo " Hello, i am $nostreply_folder "
 trap "echo ' == Goodbye. Cleaning and exiting in 5 seconds...'; sleep 4; rm -d -r -f ../../../../../multi-nostreply/"$nostreply_folder"; exit" INT
 
 
+#!/bin/bash
 
 
 
@@ -60,6 +61,4 @@ while true; do
 		echo " "
 	fi
 sleep $ASKINTERVAL
-rm -f pubkey.txt
-rm -f id.txt
 done

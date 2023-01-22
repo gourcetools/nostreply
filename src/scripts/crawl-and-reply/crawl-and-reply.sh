@@ -49,6 +49,4 @@ while true; do
 		echo " "
 	fi
 sleep $ASKINTERVAL
-rm -f pubkey.txt
-rm -f id.txt
 done
