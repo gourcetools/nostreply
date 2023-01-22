@@ -3,7 +3,7 @@ min_interval=$(cat ../../../config/MIN-INTERVAL)
 max_interval=$(cat ../../../config/MAX-INTERVAL)
 
 
-new_ask_interval=$((ask_interval * 2))
+new_ask_interval=$((ask_interval * 4))
 
 if [[ $new_ask_interval -lt $min_interval ]]; then
   echo $min_interval > ../../../config/ASK-INTERVAL
