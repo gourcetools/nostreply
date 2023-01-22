@@ -15,9 +15,10 @@ done < "../../../config/ASK-MESSAGE-LIST"
 
 cd ../../../../multi-nostreply
 for d in ./* ; do
-    echo "dir: $d"
+    echo "Launching $d"
     cd $d/src/scripts/crawl-and-reply
     x-terminal-emulator -e ./crawl-and-reply.sh &
+    sleep 1
     cd ../../../../
 done
 
