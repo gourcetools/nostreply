@@ -27,14 +27,14 @@ while true; do
 	NOTEID=$(cat id.txt)
 	PUBKEY=$(cat pubkey.txt)
 		if [ "$NOTEID" == "$OLDNOTE" ]; then   	
-		../adaptative-ask-interval/multiply.sh
+		../adaptive-ask-interval/multiply.sh
 		unset ASKINTERVAL
 		ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
         	echo " == ⌛ No new messages... checking again in $ASKINTERVAL seconds"
 		echo " "
 		else
 		echo " == 🆕 New messages found, let's reply"
-		../adaptative-ask-interval/divide.sh
+		../adaptive-ask-interval/divide.sh
 		unset ASKINTERVAL
 		ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
 		echo " "
