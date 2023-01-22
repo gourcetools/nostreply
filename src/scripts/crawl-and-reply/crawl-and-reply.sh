@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ -d "node_modules" ]; then
   echo "node_modules folder exists, skipping install"
 else
