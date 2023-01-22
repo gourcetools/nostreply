@@ -1,14 +1,5 @@
 #!/bin/bash
 
-if [ -d "node_modules" ]; then
-  echo "node_modules folder exists, skipping install"
-else
-  echo "node_modules folder does not exist"
-  echo "npm i puppeteer"
-  npm i puppeteer
-fi
-
-
 
 while true; do
 	PRIVKEY=$(cat ../../../config/REPLY-PRIVKEY)
@@ -39,6 +30,7 @@ while true; do
 		ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
 		echo " "
 		nostril --envelope --pow "$POW" --sec "$PRIVKEY" --content "$REPLYMESSAGE" --tag e "$NOTEID" --tag p "$PUBKEY" --tag " " "reply" | websocat "$RELAY" 
+		echo " == OK . RELAY "$RELAY" "
 		echo " "
 		echo " == ⌛Checking for new messages in $ASKINTERVAL seconds..."
 		echo " "

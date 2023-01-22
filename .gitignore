@@ -7,3 +7,5 @@ config/REPLY-PRIVKEY
 config/REPLY-PRIVKEY
 src/scripts/crawl-and-reply/id.txt
 *.txt
+config/ASK-MESSAGE
+config/ASK-INTERVAL
