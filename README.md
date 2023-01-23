@@ -26,3 +26,4 @@ then use ./START.sh to start the bot.
 🙋‍♂️ Need help? 
 - Nostr: <b>bitpaint@bitpaint.club</b> | <b>gourcetools@gourcetools.github.io</b>
 - Telegram: <b>@bitpaint</b> | Twitter: <b>@bitpaintclub<br></b>
+ 
