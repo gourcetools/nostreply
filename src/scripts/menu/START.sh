@@ -71,7 +71,7 @@ case $choice in
   4)  echo "🔃 Update Nostreply (will also reset) "
   cd ../../../
   git pull
-  source ../menu/START.sh ;;
+  source ./src/scripts/menu/START.sh ;;
     
   
   # Pattern 5
