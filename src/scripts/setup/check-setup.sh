@@ -16,9 +16,4 @@ unset RELAY
 
 echo " ========================== "
 echo " ==   ✅ SETUP OK ✅"
-echo " == Starting in 5 seconds..."
 echo " ========================== "
-cd ../crawl-and-reply
-./crawl-and-reply.sh
-
-

@@ -1,2 +1,4 @@
-cd src/scripts/crawl-and-reply
-./crawl-and-reply.sh
+chmod -R +x ./*.sh
+chmod -R +x ./src/scripts/*/*.sh
+cd src/scripts/menu
+./START.sh

@@ -1,4 +1,7 @@
 #!/bin/bash
+cd ../install
+./install.sh
+cd ../setup
 
 echo " "
 echo " "
@@ -6,13 +9,13 @@ echo "	┌─┐┌─┐┌┬┐┬ ┬┌─┐";
 echo "	└─┐├┤  │ │ │├─┘";
 echo "	└─┘└─┘ ┴ └─┘┴  ";
 echo " "
-echo " == 🔍 Enter the pattern you want to reply to ex: HEY HEY HEY"
+echo " == 🔍 Enter the pattern you want to reply to ex: gm"
 read ASKMESSAGE
 rm -f ../../../config/ASKMESSAGE
 echo $ASKMESSAGE>../../../config/ASK-MESSAGE
 
 echo " "
-echo " == 💬 Enter the REPLYMESSAGE ex: THATZ A SCAM! :"
+echo " == 💬 Enter the REPLYMESSAGE ex: Good Morning! :"
 read REPLYMESSAGE
 rm -f ../../../config/REPLY-MESSAGE
 echo $REPLYMESSAGE>../../../config/REPLY-MESSAGE
@@ -24,7 +27,7 @@ rm -f ../../../config/ASK-INTERVAL
 echo $ASKINTERVAL > ../../../config/ASK-INTERVAL
 
 echo " "
-echo " == 🐇 Enter the minimum ask in seconds ex: 5 "
+echo " == 🐇 Enter the minimum ask interval in seconds ex: 5 "
 read MINASKINTERVAL
 rm -f ../../../config/MIN-INTERVAL
 echo $MINASKINTERVAL > ../../../config/MIN-INTERVAL
@@ -49,7 +52,7 @@ rm -f ../../../config/REPLY-PRIVKEY
 echo $PRIVKEY>../../../config/REPLY-PRIVKEY
 
 echo " "
-echo " == 📡 Enter the relay you will be sending the reply to:"
+echo " == 📡 Enter the relay you will using to send replys:"
 echo " == 📡 Leave blank to use wss://relay.nostr.info:"
 read RELAY
 rm -f ../../../config/RELAY

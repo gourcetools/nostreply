@@ -65,7 +65,7 @@ fi
 
 # Check if "fs" is installed
 echo " == 🤔 Checking if node_modules/fs exist "
-if [ -d "../crawl-and-reply/node_modules/fs" ]; then
+if [ -d "../check-and-reply/node_modules/fs" ]; then
   echo " == 👌Ok.  "
   echo ""
 else
@@ -73,7 +73,7 @@ else
   echo ""
   echo " == 🚀 Let's install it! "
   echo ""
-  cd ../crawl-and-reply/
+  cd ../check-and-reply/
   npm i fs
   cd ../install
 fi
@@ -81,7 +81,7 @@ echo " "
 
 # Check if "ws" is installed
 echo " == 🤔 Checking if node_modules/ws exist "
-if [ -d "../crawl-and-reply/node_modules/ws" ]; then
+if [ -d "../check-and-reply/node_modules/ws" ]; then
   echo " == 👌Ok.  "
   echo ""
 else
@@ -89,14 +89,11 @@ else
   echo ""
   echo " == 🚀 Let's install it! "
   echo ""
-  cd ../crawl-and-reply/
+  cd ../check-and-reply/
   npm i ws
   cd ../install
 fi
 echo " "
 
 echo " == ✅ INSTALL OK "
-echo " "
 echo " == Opening setup in 5 seconds ..."
-cd ../setup
-./setup.sh

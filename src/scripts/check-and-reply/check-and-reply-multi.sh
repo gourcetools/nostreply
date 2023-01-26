@@ -1,4 +1,20 @@
 #!/bin/bash
+echo " "
+echo "┌┐┌┌─┐┌─┐┌┬┐┬─┐┌─┐┌─┐┬ ┬ ┬";
+echo "││││ │└─┐ │ ├┬┘├┤ ├─┘│ └┬┘";
+echo "┘└┘└─┘└─┘ ┴ ┴└─└─┘┴  ┴─┘┴ ";
+echo " "
+
+current_path=$(pwd)
+nostreply_folder=$(echo $current_path | rev | cut -d'/' -f4 | rev)
+echo " Hello, i am $nostreply_folder "
+
+
+
+trap "echo ' == Goodbye. Cleaning and exiting in 5 seconds...'; sleep 4; rm -d -r -f ../../../../../multi-nostreply/"$nostreply_folder"; exit" INT
+
+
+#!/bin/bash
 
 
 
@@ -15,8 +31,8 @@ while true; do
 	unset NOTE
 	echo " == ❓Asking nostr.band for new messages..."
 	echo " == ⌛ ⌛ ⌛ ⌛ ⌛ ⌛ ⌛ ⌛ ⌛ ⌛ ⌛ ⌛ ="
-	# NODE crawl.js for new messages 
-	node ./crawl.js > /dev/null 2>&1
+	# NODE check-and-reply.js for new messages 
+	node ./check-and-reply.js > /dev/null 2>&1
 	# Set the outputs of crawl.js as id and pubkey
 	NOTEID=$(cat ./id.txt)
 	PUBKEY=$(cat ./pubkey.txt)
@@ -24,7 +40,7 @@ while true; do
 		if [ "$NOTEID" == "$OLDNOTE" ]; then   	
 		cd ../adaptive-ask-interval
 		./multiply.sh
-		cd ../crawl-and-reply/
+		cd ../check-and-reply/
 		unset ASKINTERVAL
 		# Set new interval for the timer		
 		ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
@@ -35,7 +51,7 @@ while true; do
 		# If it's NOT the same note: divide the timer interval
 		cd ../adaptive-ask-interval
 		./divide.sh
-		cd ../crawl-and-reply/
+		cd ../check-and-reply/
 		unset ASKINTERVAL
 		# Set new interval for the timer	
 		ASKINTERVAL=$(cat ../../../config/ASK-INTERVAL)
