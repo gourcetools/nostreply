@@ -1,4 +1,6 @@
 # <b> 🤖↩️ nostreply</b><br>
+ Bot that reply to specified text on nostr global feed using NIP50  <br>
+
 
 <img src="https://img.shields.io/badge/License-MIT-orange.svg"> <br>
 
@@ -12,16 +14,28 @@
 <br>
 
 # <b>✔️ How to use ?</b><br>
-`git clone https://github.com/gourcetools/nostreply` <br>
-` cd ./nostreply ` <br>
- maybe ` chmod a+rwx ./START.sh ` <br>
-` ./START.sh ` <br>
+```
+git clone https://github.com/gourcetools/nostreply
+cd ./nostreply
+./START.sh
+```
 
 <br>
 
 
-=================================
-🙋‍♂️ Need help? 
-- Nostr: <b>bitpaint@bitpaint.club</b> | <b>gourcetools@gourcetools.github.io</b>
-- Telegram: <b>@bitpaint</b> | Twitter: <b>@bitpaintclub<br></b>
- 
+# 🙋‍♂️ Need help? <br> 
+### <b>Telegram:</b> https://t.me/bitpaint <br>
+### <b>Twitter:</b> https://twitter.com/bitpaintclub <br>
+### <b>Nostr:</b> <br>
+#### hex: 
+``` 
+0000005cc4586681ad8e7f4b75436fb7904b0e34ff072bb3406ddb90226d7eab 
+``` 
+#### npub: 
+``` 
+npub1qqqqqhxytpngrtvw0a9h2sm0k7gykr35lurjhv6qdhdeqgnd064swghgx4 
+``` 
+#### nip05: 
+``` 
+gourcetools@gourcetools.github.io 
+```
